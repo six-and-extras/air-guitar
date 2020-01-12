@@ -7,28 +7,28 @@ import Webcam from 'react-webcam';
 import * as serviceWorker from './serviceWorker';
 
 /* 
-* DISPLAYING VIDEO FROM THE WEBCAM
+* Display video from the webcam
 */
 class WebcamComponent extends React.Component {
     render() {
-        // specify the constraints for the webcam video
+        // Specify the constraints for the webcam video
         const videoConstraints = {
             width: window.innerWidth,
             height: window.innerHeight - 50,
             facingMode: "user"
             };
 
-        // render the webcam video with specific parameters
+        // Render the webcam video with specific parameters
         return <Webcam 
             audio={false}
             videoConstraints={videoConstraints}/>;
     }
   }
 
-// actually display stuff in the browser
+// Display the webcam component in the browser
 ReactDOM.render(<WebcamComponent />, document.getElementById('root'));
 
-// smth random???? -->
+// serviceWorker stuff that came with the boilerplate, not sure if we need it (nO fUnNy CoMmEnTs) -->
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
