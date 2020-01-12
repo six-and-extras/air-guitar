@@ -6,25 +6,21 @@ import './index.css';
 import Webcam from 'react-webcam';
 import * as serviceWorker from './serviceWorker';
 
-class Form1 extends React.Component{
-    testFunction() {
-        fetch('localhost:5000/test?place=')
-    }
-
-    render(){
-        console.log("test");
-        return (
-            <button onClick={this.testFunction.bind(this)}>
-                hello
-            </button>
-        );
-    }
-}
-
 /* 
 * Display video from the webcam
 */
 class WebcamComponent extends React.Component {
+    constructor(props) {
+    super(props);
+    this.place = 'place';    
+  }
+
+
+    testFunction() {
+        console.log("wlakjsdlkfjdslkafj");
+        fetch('localhost:5000/process_image?place=');
+    }
+
     render() {
         // Specify the constraints for the webcam video
         const videoConstraints = {
@@ -34,14 +30,19 @@ class WebcamComponent extends React.Component {
             };
 
         // Render the webcam video with specific parameters
-        return <Webcam 
-            audio={false}
-            videoConstraints={videoConstraints}/>;
+        return [
+            <Webcam
+                audio={false}
+                videoConstraints={videoConstraints} />,
+            <button onClick={this.testFunction.bind(this)}>
+                submit
+            </button>   
+        ];
     }
   }
 
 // Display the webcam component in the browser
-ReactDOM.render(<Form1 />, document.getElementById('root'));
+ReactDOM.render(<WebcamComponent />, document.getElementById('root'));
 
 // serviceWorker stuff that came with the boilerplate, not sure if we need it (nO fUnNy CoMmEnTs) -->
 

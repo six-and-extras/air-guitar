@@ -2,7 +2,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-@app.route('/test', methods = ['GET', 'POST'])
+@app.route('/process_image', methods = ['GET', 'POST'])
 def result():
     if request.method == 'GET':
         place = request.args.get('place', None)
