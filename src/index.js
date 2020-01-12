@@ -10,28 +10,39 @@ import * as serviceWorker from './serviceWorker';
 * Display video from the webcam
 */
 class WebcamComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { screenshot: null }
+        // this can be moved directly to the onClick event
+        // this.screenshot = this.screenshot.bind(this);
+    }
+
+    screenshot() {
+        // access the webcam trough this.refs
+        var screenshot = this.refs.webcam.getScreenshot();
+        this.setState({ screenshot: screenshot });
+    }
+
     render() {
         // Specify the constraints for the webcam video
         const videoConstraints = {
             width: window.innerWidth,
             height: window.innerHeight - 50,
             facingMode: "user"
-            };
-
+        };
         // Render the webcam video with specific parameters
         return [
             <Webcam
                 audio={false}
                 videoConstraints={videoConstraints} />,
             <div class="form">
-                <form action="http://localhost:5000/result" method="get">
-                    Place: <input type="text" name="place" />
-                    <input type="submit" value="Submit" />
+                <form action="http://localhost:3000/result" method="get">
+                    <button onClick={this.screenshot.bind(this)}>Capture photo</button>
                 </form>
             </div>
         ];
     }
-  }
+}
 
 // Display the webcam component in the browser
 ReactDOM.render(<WebcamComponent />, document.getElementById('root'));
