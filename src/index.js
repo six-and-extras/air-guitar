@@ -6,22 +6,20 @@ import './index.css';
 import Webcam from 'react-webcam';
 import * as serviceWorker from './serviceWorker';
 
-class Form1 extends Component{
+class Form1 extends React.Component{
+    testFunction() {
+        fetch('localhost:5000/test?place=')
+    }
+
     render(){
+        console.log("test");
         return (
-            <div class="form">
-                <form action="http://localhost:5000/result" method="get">
-                    Place: <input type="text" name="place"/>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
+            <button onClick={this.testFunction.bind(this)}>
+                hello
+            </button>
         );
     }
 }
-ReactDOM.render(
-    <Form1/>,
-    document.getElementById('root')
-);
 
 /* 
 * Display video from the webcam

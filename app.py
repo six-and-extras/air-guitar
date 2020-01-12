@@ -1,14 +1,13 @@
 from flask import Flask, request
-from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/')
-@app.route('/result', methods = ['GET', 'POST'])
+@app.route('/test', methods = ['GET', 'POST'])
 def result():
     if request.method == 'GET':
         place = request.args.get('place', None)
         if place:
+            print(place)
             return place
         return "no place information is given"
 
