@@ -36,7 +36,7 @@ class WebcamComponent extends React.Component {
                 audio={false}
                 videoConstraints={videoConstraints} />,
             <div class="form">
-                <form action="http://localhost:3000/result" method="get">
+                <form action="http://localhost:3000/process_image" method="get">
                     <button onClick={this.screenshot.bind(this)}>Capture photo</button>
                 </form>
             </div>
